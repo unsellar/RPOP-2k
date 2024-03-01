@@ -32,8 +32,7 @@ bool wrld_checker(string input){
     return false;
 }
 
-
-int main() {
+bool task2 (){
     string input;
     ifstream file ("/Users/vsevolod/Documents/RPOP/RPOP/input.txt");
     while(getline(file, input)){
@@ -51,5 +50,9 @@ int main() {
             }else cout << "  answer is false" << endl;
         }
     }
-    return 0;
+    return true;
+}
+
+int main() {
+    task2();
 }
