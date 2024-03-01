@@ -112,6 +112,15 @@ bool lexer(){
             cout << symbols[input] << ", -" << endl;
         }
         
+        else if(input[0] == '\"'){
+            cout << "T_stringcon, " << '\"' << input[1];
+            while (input.back() != '\"'){
+                file >> input;
+                cout << input;
+            }
+            cout << endl;
+        }
+        
         else cout << "T_indent, " << input << endl;             //indents
     }
 

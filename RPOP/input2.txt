@@ -2,9 +2,9 @@
 int i = 0 ;
 
 /* главная функция */
-int main (void)
+int main ( void )
 {
     i = i + 1; /* инкремент переменной */
-    printf ("i = %d\n", i) ; /* печать */
+    printf ( "i = %d\n" , i ) ; /* печать */
     return 0 ;
 }
