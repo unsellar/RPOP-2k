@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <regex>
+#include <map>
+#include <stdio.h>
+#include <string.h>
 using namespace std;
 
 
@@ -52,7 +55,75 @@ bool task2 (){
     }
     return true;
 }
+bool lexer(){
+    //Зарезервированные слова языка: char, int, float, void, if, else, while, for, return.
+    map<string, string> reserved = {
+        {"int", "T_int"},
+        {"char", "T_char"},
+        {"float", "T_float"},
+        {"void", "T_void"},
+        {"if", "T_if"},
+        {"else", "T_else"},
+        {"while", "T_while"},
+        {"for", "T_for"},
+        {"return", "T_return"}
+    };
+
+    map<string, string> symbols = {
+        {"=", "T_assign"},
+        {"+", "T_add"},
+        {"-", "T_subtract"},
+        {"*", "T_multiply"},
+        {"/", "T_divide"},
+        {"%", "T_remainder"},
+        {"!", "T_factorial"},
+        {"==", "T_equal"},
+        {"!=", "T_not_equal"},
+        {">=", "T_greater_equal"},
+        {">", "T_greater"},
+        {"<=", "T_less_equal"},
+        {"<", "T_less"},
+        {"&&", "T_and"},
+        {"||", "T_or"},
+        {"(", "T_open_parenthesis"},
+        {")", "T_close_parenthesis"},
+        {"{", "T_open_brace"},
+        {"}", "T_close_brace"},
+        {"[", "T_open_square_bracket"},
+        {"]", "T_close_square_bracket"},
+        {";", "T_semicolon"},
+        {",", "T_comma"}
+    };
+    
+    string input;
+    ifstream file ("/Users/vsevolod/Documents/RPOP/RPOP/input2.txt");
+    while(file >> input){
+        if(input == "/*"){                                     //comments
+            while(input != "*/"){
+                file >> input;
+            }
+        }
+        
+        else if(reserved[input] != ""){                          //reserved
+            cout << reserved[input] << ", -" << endl;
+        }
+        
+        else if(symbols[input] != ""){                           //symbols
+            cout << symbols[input] << ", -" << endl;
+        }
+        
+        else cout << "T_indent, " << input << endl;             //indents
+    }
+
+
+    return true;
+}
 
 int main() {
-    task2();
+    int taskn = -1;
+    cout << "Task number (2/3): ";
+    cin >> taskn;
+    if (taskn == 2) task2();
+    if (taskn == 3) lexer();
+    return 0;
 }
