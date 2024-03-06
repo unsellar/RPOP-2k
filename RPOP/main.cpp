@@ -113,11 +113,7 @@ bool lexer(){
         }
         
         else if(input[0] == '\"'){
-            cout << "T_stringcon, " << '\"' << input[1];
-            while (input.back() != '\"'){
-                file >> input;
-                cout << input;
-            }
+            cout << "T_stringcon, " << input;
             cout << endl;
         }
         
